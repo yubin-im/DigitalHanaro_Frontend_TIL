@@ -1,1 +1,1 @@
-# hanaro
+# Digital Hanaro
