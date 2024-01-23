@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <title>게시판</title>
+</head>
+<body class="bg-gray-100">
+    
+<!-- 게시글 -->
+<div class="container mx-auto my-8">
+    <h1 class="text-3xl font-bold text-black mb-4">- 자유 게시판 -</h1>
+    <div class="bg-white shadow overflow-hidden sm:rounded-md p-6">
+        <div class="flex justify-between mb-4">
+            <div>
+                <h1 class="text-2xl font-bold text-black mb-2">제목</h1>
+                <p class="text-sm text-gray-600">작성자: 작성자</p>
+            </div>
+            <div class="text-sm text-gray-600">조회수: 100</div>
+        </div>
+        <div class="border p-4 max-h-[80px] overflow-y-auto">
+            <p class="text-gray-800">
+                게시물 내용이 들어가고 readonly
+                게시물 내용이 들어가고 readonly
+                게시물 내용이 들어가고 readonly
+                게시물 내용이 들어가고 readonly
+                게시물 내용이 들어가고 readonly
+                게시물 내용이 들어가고 readonly
+                게시물 내용이 들어가고 readonly
+                게시물 내용이 들어가고 readonly
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- 댓글 목록 -->
+<div class="container mx-auto my-8">
+    <h1 class="text-2xl font-bold text-black mb-4">댓글 목록</h1>
+    <ul class="bg-white shadow overflow-hidden sm:rounded-md">
+        <!-- 댓글 항목 1 -->
+        <li>
+            <div class="flex justify-between px-4 py-4 sm:px-6">
+                <div class="flex items-center">
+                    <div class="ml-4">
+                        <p class="text-lg font-medium text-indigo-600">댓글 작성자 1</p>
+                        <p class="mt-1 text-sm text-gray-600">댓글 내용 1</p>
+                    </div>
+                </div>
+                <div class="text-sm text-gray-600">댓글 작성일: 2022-01-01</div>
+            </div>
+        </li>
+        <!-- 댓글 항목 2 -->
+        <li>
+            <div class="flex justify-between px-4 py-4 sm:px-6">
+                <div class="flex items-center">
+                    <div class="ml-4">
+                        <p class="text-lg font-medium text-indigo-600">댓글 작성자 2</p>
+                        <p class="mt-1 text-sm text-gray-600">댓글 내용 2</p>
+                    </div>
+                </div>
+                <div class="text-sm text-gray-600">댓글 작성일: 2022-01-02</div>
+            </div>
+        </li>
+
+        <!-- 댓글 목록 페이징 -->
+        <div class="px-4 py-3 bg-white border-t border-gray-200 sm:px-6">
+            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <span class="sr-only">Previous</span>
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M9.293 5.293a1 1 0 0 1 0 1.414L6.414 10l2.879 2.879a1 1 0 1 1-1.414 1.414l-3.586-3.586a1 1 0 0 1 0-1.414L7.293 5.293a1 1 0 0 1 1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="#" aria-current="page" class="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                    1
+                </a>
+                <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                    2
+                </a>
+                <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                    3
+                </a>
+                <span class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <span class="sr-only">Next</span>
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M10.707 14.707a1 1 0 0 1 0-1.414L13.586 10l-2.879-2.879a1 1 0 1 1 1.414-1.414l3.586 3.586a1 1 0 0 1 0 1.414l-3.586 3.586a1 1 0 0 1-1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </span>
+            </nav>
+        </div>
+    </ul>
+</div>
+
+<!-- 댓글 작성 -->
+<div class="container mx-auto my-8">
+    <h1 class="text-2xl font-bold text-black mb-4">댓글 작성</h1>
+    <div class="bg-white shadow overflow-hidden sm:rounded-md p-6">
+        <p class="text-3sm font-bold text-black-600 mb-2">댓글 작성자</p>
+        <form>
+            <div class="mb-4">
+                <label for="title" class="block text-sm font-medium text-gray-600">제목</label>
+                <input type="text" id="title" name="title" class="mt-1 p-2 w-full border rounded-md">
+            </div>
+            <div class="mb-4">
+                <label for="content" class="block text-sm font-medium text-gray-600">내용</label>
+                <textarea id="content" name="content" rows="2" class="mt-1 p-2 w-full border rounded-md"></textarea>
+            </div>
+            <button type="submit" class="bg-black text-white py-2 px-4 rounded-md">작성 완료</button>
+        </form>
+    </div>
+</div>
+
+<hr class="my-8 border-t border-gray-200">
+
+<!-- 게시글 목록 -->
+<div class="container mx-auto my-8">
+    <h1 class="text-3xl font-bold text-black mb-4">게시글 목록</h1>
+    <ul class="bg-white shadow overflow-hidden sm:rounded-md">
+        <!-- 게시물 항목 1 -->
+        <li>
+            <a href="#" class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
+                <div class="flex items-center justify-between px-4 py-4 sm:px-6">
+                    <div class="flex items-center">
+                        <div class="ml-4">
+                            <p class="text-lg font-medium text-indigo-600">게시물 제목 1</p>
+                            <p class="mt-1 text-sm text-gray-600">작성자: 작성자 1</p>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-600">댓글 수: 10</div>
+                </div>
+            </a>
+        </li>
+        <!-- 게시물 항목 2 -->
+        <li>
+            <a href="#" class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
+                <div class="flex items-center justify-between px-4 py-4 sm:px-6">
+                    <div class="flex items-center">
+                        <div class="ml-4">
+                            <p class="text-lg font-medium text-indigo-600">게시물 제목 2</p>
+                            <p class="mt-1 text-sm text-gray-600">작성자: 작성자 2</p>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-600">댓글 수: 15</div>
+                </div>
+            </a>
+        </li>
+
+        <!-- 게시글 목록 페이징 -->
+        <div class="px-4 py-3 bg-white border-t border-gray-200 sm:px-6">
+            <nav class="relative z-0 inline-flex justify-center rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <span class="sr-only">Previous</span>
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M9.293 5.293a1 1 0 0 1 0 1.414L6.414 10l2.879 2.879a1 1 0 1 1-1.414 1.414l-3.586-3.586a1 1 0 0 1 0-1.414L7.293 5.293a1 1 0 0 1 1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="#" aria-current="page" class="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                    1
+                </a>
+                <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                    2
+                </a>
+                <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                    3
+                </a>
+                <span class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <span class="sr-only">Next</span>
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M10.707 14.707a1 1 0 0 1 0-1.414L13.586 10l-2.879-2.879a1 1 0 1 1 1.414-1.414l3.586 3.586a1 1 0 0 1 0 1.414l-3.586 3.586a1 1 0 0 1-1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </span>
+            </nav>
+        </div>
+    </ul>
+
+</div>
+
+</body>
+</html>
