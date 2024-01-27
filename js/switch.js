@@ -1,3 +1,4 @@
+// switch 문을 사용할 땐 break 까먹지 않기!
 const x = 5;
 
 switch(x) {
