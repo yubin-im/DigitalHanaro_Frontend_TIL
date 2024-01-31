@@ -26,4 +26,7 @@ console.log("ex7) [1, 2, 'X', 'Y', 'Z', 4, 5] 만들기");
 arr2.splice(2, 1, 'X', 'Y', 'Z');
 console.log(arr2);
 
-console.log('위 7번 문제를 splice를 사용하지 말고 작성하시오.');
+console.log('ex8) 위 7번 문제를 splice를 사용하지 말고 작성하시오.');
+// 문제 풀이
+const ex8 = [...arr2.slice(0, 2), 'X', 'Y', 'Z', ...arr2.slice(-2)];
+console.log(ex8);
