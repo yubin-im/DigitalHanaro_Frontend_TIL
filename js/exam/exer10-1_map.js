@@ -44,6 +44,5 @@ const empDept_ = new Map();
 const xx = emps.map(({ id, name, dept }) => [{ id, name }, deptMap.get(dept)]);
 console.log("🚀 ~ xx:", xx)
 
-
-// console.log(empDept.get(kim).dname); // '개발팀'
-// // 개발팀 직원 목록 출력 ⇒ Kim, Park, Choi
+console.log(empDept.get(kim).dname); // '개발팀'
+// 개발팀 직원 목록 출력 ⇒ Kim, Park, Choi
