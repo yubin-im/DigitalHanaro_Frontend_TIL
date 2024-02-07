@@ -48,3 +48,26 @@ const kim: User = { id: 2, name: 'Kim', city: 'Seoul' };
 
 type Addr = { id: number; addr?: string };
 const choi: Addr = { id: 1, addr: 'Seoul' };
+
+
+// 리터럴 타입 
+const bt: 'A' | 'B' | 'AB' | 'O' = 'A';
+const hour: 12 | 7 = 7;
+
+const n: null = null;
+const u: undefined = undefined;
+
+// 유니언 타입
+type Member = {
+  name: string,
+  addr: string,
+  discountRate: number;
+};
+
+type Guest = {
+  name: string,
+  age: number,
+};
+
+type Customer= Member | Guest;
+
