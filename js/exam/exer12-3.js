@@ -1,4 +1,5 @@
 import assert from 'assert';
+import { telfmt } from '../utils/regexputils.js';
 
 const telfmt = telstr => {
   const len = telstr?.length;

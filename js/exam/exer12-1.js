@@ -47,3 +47,5 @@ assert.strictEqual(`강원도${iuya('강원도')}`, '강원도여야');
 assert.strictEqual(`고성군${iuya('고성군')}`, '고성군이어야');
 assert.strictEqual(`강원도${ilang('강원도')}`, '강원도랑');
 assert.strictEqual(`고성군${ilang('고성군')}`, '고성군이랑');
+
+import { isEndJaum } from '../utils/regexputils.js';

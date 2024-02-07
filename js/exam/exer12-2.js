@@ -1,4 +1,5 @@
 // 초성 검색을 하는 search함수를 정규식을 이용하여 작성하시오.
+import { searchByInitialSound } from '../utils/regexputils.js';
 
 const s = ['강원도 고성군', '고성군 토성면', '토성면 북면', '북면', '김1수'];
 
