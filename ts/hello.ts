@@ -10,3 +10,10 @@ let i = 1;
 
 const hong: User = {id: 1, name: 'Hong'};
 const kim: User = {id: 2, name: 'Kim'};
+
+interface UserIf {
+    id: number;
+    name: string;
+    city?: string;
+    getName(): string;
+}
