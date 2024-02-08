@@ -15,10 +15,16 @@ interface Dept {
 
 // type Ud2 = (User | Dept) & {addr: string};
 
-interface Ud2 extends Partial<User>, Partial<Dept>{
+// interface Ud2 extends Partial<User>, Partial<Dept>{
+//     id: number;
+//     addr: string;
+// }
+
+interface Ud2 {
+    [idx: string]: string | number;
     id: number;
     addr: string;
-}
+  }
   
 // 다음 코드가 오류가 없으면 통과!
 const ud2: Ud2 = {id: 1, name: 'HH', addr: 'Seoul'};
