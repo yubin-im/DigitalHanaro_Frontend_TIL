@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>급여 테이블</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: auto;
+      text-align: center;
+      border: 1px solid black;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 10px;
+      text-align: right;
+    }
+
+    th {
+      color: black;
+      text-align: center;
+    }
+
+    #totalAmountContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    #totalAmountLabel {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <table id="salaryTable">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>이름</th>
+        <th>근무시간</th>
+        <th>시간당급여액</th>
+        <th>기본액</th>
+        <th>초과수당</th>
+        <th>합계</th>
+        <th>세액</th>
+        <th>실지불액</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <div id="totalAmountContainer">
+    <div id="totalAmountLabel">총지불액</div>
+    <div id="totalAmount"></div>
+  </div>
+
+  <script>
+    window.onload = function() {
+      var data = {
+        "base_time": 20,
+        "list": [
+          {"id": 1, "username": "홍길동", "work_time": 40, "per_pay": 10000},
+          {"id": 2, "username": "송민헌", "work_time": 20, "per_pay": 20000},
+          {"id": 3, "username": "장길산", "work_time": 30, "per_pay": 30000},
+          {"id": 4, "username": "임꺽정", "work_time": 10, "per_pay": 40000},
+          {"id": 5, "username": "강민구", "work_time": 30, "per_pay": 10000}
+        ]
+      };
+
+      var salaryTable = document.getElementById("salaryTable").getElementsByTagName('tbody')[0];
+
+      for (var i = 0; i < data.list.length; i++) {
+        var row = salaryTable.insertRow(i);
+        var id = row.insertCell(0);
+        var userName = row.insertCell(1);
+        var workTime = row.insertCell(2);
+        var perPay = row.insertCell(3);
+        var baseAmount = row.insertCell(4);
+        var overtimePay = row.insertCell(5);
+        var totalAmount = row.insertCell(6);
+        var taxAmount = row.insertCell(7);
+        var actualPay = row.insertCell(8);
+
+        id.innerHTML = addCommas(data.list[i].id);
+        userName.innerHTML = data.list[i].username;
+        workTime.innerHTML = addCommas(data.list[i].work_time);
+        perPay.innerHTML = addCommas(data.list[i].per_pay);
+        var baseTime = data.base_time;
+        var overtime = Math.max(0, data.list[i].work_time - baseTime);
+        var basePay = data.list[i].work_time * data.list[i].per_pay;
+        var overtimeAmount = overtime > 0 ? (overtime * 0.5 * data.list[i].per_pay) : 0;
+        var totalPay = basePay + overtimeAmount;
+        var tax = totalPay * 0.033;
+        var actualPayAmount = totalPay - tax;
+
+        baseAmount.innerHTML = addCommas(basePay.toFixed(0));
+        overtimePay.innerHTML = addCommas(overtimeAmount.toFixed(0));
+        totalAmount.innerHTML = addCommas(totalPay.toFixed(0));
+        taxAmount.innerHTML = addCommas(tax.toFixed(0));
+        actualPay.innerHTML = addCommas(actualPayAmount.toFixed(0));
+
+        // 총지불액
+        data.list[i].actualPayAmount = actualPayAmount;
+      }
+
+      // 총지불액
+      var totalActualPay = data.list.reduce(function(acc, curr) {
+        return acc + (curr.actualPayAmount || 0);
+      }, 0);
+      document.getElementById("totalAmount").innerHTML = addCommas(totalActualPay.toFixed(0));
+
+      function addCommas(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+    };
+  </script>
+
+</body>
+</html>
