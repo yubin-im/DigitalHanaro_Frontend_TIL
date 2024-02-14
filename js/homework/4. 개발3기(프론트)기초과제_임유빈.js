@@ -2,39 +2,71 @@ import assert from 'assert'; // ESM
 // ⇒ const assert = require('assert'); // CJS
 
 class Collection {
-    constructor() {}
-    get _arr() {}
-    push(value) {}
+    #arr;
+    constructor(...args) {
+        this.#arr = Array.isArray(args[0]) ? args[0] : args;
+    }
+    
+    get _arr() {
+        return this.#arr;
+    }
+
+    push(value) {
+        this._arr.push(value);
+        return this;
+    }
 
     // 가장 (Stack:나중, Queue:먼저) 들어간 요소 반환 (요소 삭제 없음!)
-    get peek() {}
+    get peek() {
+        return this._arr.at(-1);
+    }
 
     // 가장 (Stack:나중, Queue:먼저) 들어간 요소 반환 & 삭제
-    get poll() {}
+    get poll() {
+        return this._arr.shift();
+    }
 
     // 모든 원소 지우기
-    clear() {}
+    clear() {
+        this._arr = [];
+    }
 
     // array 타입반환
-    toArray() {}
+    toArray() {
+        return [...this._arr];
+    }
 
     // 가장 (Stack:나중, Queue:먼저) 들어간 요소 삭제(skip)
-    remove() {}
+    remove() {
+        this._arr.pop();
+    }
 
     // 원소가 하나도 없으면 true
-    get isEmpty() {}
+    get isEmpty() {
+        return this._arr.length === 0;
+    }
 
     // 현재 원소의 개수
-    get size() {}
+    get size() {
+        return this._arr?.length;
+    }
 }
 
 class Stack extends Collection {
-    pop() { return this._arr.pop(); }
+    pop() {
+        return this._arr.pop();
+    }
 }
 
 class Queue extends Collection {
-    enqueue(value) { this.push(value); return this; }
-    dequeue() { return this._arr.shift(); }
+    enqueue(value) {
+        this.push(value);
+        return this;
+    }
+
+    dequeue() { 
+        return this._arr.shift();
+    }
 }
 
 // 아래 코드가 통과되도록 Collection 클래스의 method를 작성하시오!
