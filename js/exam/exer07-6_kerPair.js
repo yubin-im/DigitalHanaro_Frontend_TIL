@@ -3,7 +3,7 @@
 
 const keyPair = function(arr, N) {
     for(let i = 0; i < arr.length; i += 1) {
-        for(let j = 0; j < arr.length; j += 1) {
+        for(let j = i + 1; j < arr.length; j += 1) {
             if (arr[i] + arr[j] === N) {
                 console.log([i, j]);
                 return [i, j];
@@ -11,6 +11,16 @@ const keyPair = function(arr, N) {
         }
     }
 }
+
+// // 아래는 타입스크립트 코드로 짠 답
+// const keyPairAns = (arr: number[], n: number) => {
+//     const pairIdx:{ [k: number]: number} = {};
+//     for (let i = 0; i < arr.length; i += 1) {
+//         const val = arr[i];
+//         if (pairIdx[val]) return [pairIdx[val], i];
+//         pairIdx[n - val] = i;
+//     }
+// };
 
 keyPair([1, 3, 4, 5], 7);             // [1, 2]
 keyPair([1, 4, 45, 6, 10, 8], 16);    // [3, 4]

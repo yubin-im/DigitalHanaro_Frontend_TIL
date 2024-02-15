@@ -12,6 +12,16 @@ const rangeSum = function(n, m) {
     return sum;
 }
 
+// // 아래는 타입스크립트 코드로 짠 답
+// const rangeSumAns = (start: number = 0, end: number = arr.length - 1) => {
+//     let sum = 0;
+//     for (let i = start; i <= end; i += 1) {
+//       sum += arr[i];
+//     }
+  
+//     return sum;
+//   };
+
 assert.deepStrictEqual(rangeSum(2, 5), 19);
 assert.deepStrictEqual(rangeSum(3, 5), 15);
 assert.deepStrictEqual(rangeSum(1, 4), 14);
