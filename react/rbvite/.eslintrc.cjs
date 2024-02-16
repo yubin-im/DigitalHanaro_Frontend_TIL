@@ -5,6 +5,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:react/jsx-runtime',
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
   ],
@@ -16,7 +17,16 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'prettier/prettier': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     quotes: ['error', 'single', { allowTemplateLiterals: true }],
+    'react/no-array-index-key': 'error',
   },
-}
+  settings: {
+    react: { version: 'detect' }, // for react version warnning
+  },
+};
