@@ -1,6 +1,6 @@
-import { Session } from '../App';
-import Login from './Login';
-import Profile from './Profile';
+import { Cart, Session } from '../App';
+import { Login } from './Login';
+import { Profile } from './Profile';
 
 type Props = {
   session: Session;
@@ -8,30 +8,25 @@ type Props = {
   logout: () => void;
 };
 
-export const My = ({ session: { loginUser }, login, logout }: Props) => {
+export const My = ({ session: { loginUser, cart }, login, logout }: Props) => {
+  if (loginUser) loginUser.name = 'XXXXXXX';
   return (
-    <>{loginUser ? <Profile logout={logout} /> : <Login login={login} />}</>
+    <div
+      style={{ border: '2px solid red', marginBottom: '2rem', padding: '1rem' }}
+    >
+      {loginUser ? (
+        <Profile loginUser={loginUser} logout={logout} />
+      ) : (
+        <Login login={login} />
+      )}
+
+      <ul>
+        {cart.map(({ id, name, price }: Cart) => (
+          <li key={id}>
+            {name} ({price.toLocaleString()}원)
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
-
-// const My = ({ session: { loginUser, cart }, login, logout }: Props) => {
-//   console.log('@@@My');
-//   return (
-//     <>
-//       {loginUser ? (
-//         <Profile loginUser={loginUser} logout={logout} />
-//       ) : (
-//         <Login login={login} />
-//       )}
-//       <ul>
-//         {cart.map(({ id, name, price }) => (
-//           <li key={id}>
-//             {name}({price})
-//           </li>
-//         ))}
-//       </ul>
-//     </>
-//   );
-// };
-
-// export default My;

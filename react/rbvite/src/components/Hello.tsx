@@ -5,23 +5,24 @@ type Props = {
   age: number;
   plusCount: () => void;
   // children: React.ReactNode;
+  // children: React.ReactElement;
 };
 
-const Hello = ({
+export const Hello = ({
   name,
   age,
   plusCount,
   children,
 }: PropsWithChildren<Props>) => {
+  age = age + 1;
+  console.log('age>>>>', age);
   return (
-    <>
-      <h1>
-        Hello, {name}({age})
-      </h1>
-      {children}
-      <button onClick={plusCount}>count + 1</button>
-    </>
+    <div style={{ border: '1px solid green' }}>
+      <h3>
+        Hello, {name} ({age})
+      </h3>
+      <button onClick={plusCount}>Plus Age</button>
+      <div>{children}</div>
+    </div>
   );
 };
-
-export default Hello;
