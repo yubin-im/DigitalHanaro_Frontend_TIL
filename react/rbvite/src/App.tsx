@@ -28,6 +28,23 @@ const SampleSession: Session = {
   ],
 };
 
+// function useState(initValueOrInitFunction) {
+//   const state = {
+//     _state: typeof initValueOrInitFunction === 'function'
+//       ? initValueOrInitFunction()
+//       : initValueOrInitFunction;
+
+//     setState(value) {
+//       this._state = value;
+//       VDom.rerender();
+//     }
+
+//     getState() {
+//       return this._state;
+//     }
+//   }
+// }
+
 function App() {
   const [count, setCount] = useState(0);
   const [session, setSession] = useState<Session>(SampleSession);
