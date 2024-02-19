@@ -17,7 +17,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react-refresh', 'jsx-a11y', 'prettier'],
+  plugins: ['react-refresh', 'react-hooks', 'jsx-a11y', 'prettier'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
@@ -29,14 +29,13 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
-    quotes: ['error', 'single', { allowTemplateLiterals: true }],
-    'react/no-array-index-key': 'error',
-    'react/react-in-jsx-scope': 'off',
-    'react/jsx-uses-react': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/prop-types': 'off',
+    'prettier/prettier': 'error',
     'react/no-array-index-key': 'error',
+    'prettier/prettier': 'error',
+    quotes: ['error', 'single', { allowTemplateLiterals: true }],
   },
   settings: {
     react: { version: 'detect' }, // for react version warnning
