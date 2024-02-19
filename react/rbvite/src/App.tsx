@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 // import reactLogo from './assets/react.svg';
 // import viteLogo from '/vite.svg';
 import './App.css';
@@ -20,8 +20,8 @@ export type Session = {
 };
 
 const SampleSession: Session = {
-  // loginUser: null,
-  loginUser: { id: 1, name: 'Hong' },
+  loginUser: null,
+  // loginUser: { id: 1, name: 'Hong' },
   cart: [
     { id: 100, name: '라면', price: 3000 },
     { id: 101, name: '컵라면', price: 2000 },
@@ -32,6 +32,7 @@ const SampleSession: Session = {
 function App() {
   const [count, setCount] = useState(0);
   const [session, setSession] = useState<Session>(SampleSession);
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   // const plusCount = () => setCount(count + 1);
   const plusCount = () => setCount((prevCount) => prevCount + 1);
@@ -60,7 +61,9 @@ function App() {
 
   return (
     <>
-      <h1 style={{ color: 'white', backgroundColor: 'red' }}>Vite + React</h1>
+      <h1 ref={titleRef} style={{ color: 'white', backgroundColor: 'red' }}>
+        Vite + React
+      </h1>
       {/* <H5 ss={`First-Component ${count}`} /> */}
       <My
         session={session}
@@ -90,6 +93,12 @@ function App() {
           count is {count}
         </button>
       </div>
+
+      <button
+        onClick={() => titleRef.current?.scrollIntoView({ behavior: 'smooth' })}
+      >
+        Go to the Top (scroll)
+      </button>
     </>
   );
 }
