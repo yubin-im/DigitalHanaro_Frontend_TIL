@@ -32,9 +32,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/prop-types': 'off',
-    'prettier/prettier': 'error',
     'react/no-array-index-key': 'error',
-    'prettier/prettier': 'error',
     quotes: ['error', 'single', { allowTemplateLiterals: true }],
   },
   settings: {
