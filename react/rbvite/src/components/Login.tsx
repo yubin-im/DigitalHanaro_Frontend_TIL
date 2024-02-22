@@ -5,7 +5,6 @@ import {
   useEffect,
   useImperativeHandle,
   useRef,
-  useState,
 } from 'react';
 import { useCounter } from '../contexts/counter-context';
 import { useSession } from '../contexts/session-context';
@@ -69,22 +68,25 @@ export const Login = forwardRef((_, ref: ForwardedRef<LoginHandler>) => {
     };
   }, [plusCount, minusCount]);
 
-  // useEffect(() => {
-  //   const tmout = setTimeout(() => console.log('X=', count), 1000);
-
-  //   return () => clearTimeout(tmout);
-  // }, [count]);
-
-  useTimeout(() => console.log('X=', count), 1000);
-
   // const [isShow, setShow] = useState(false);
   const [isShow, toggle] = useToggle();
 
+  // const f = useCallback(() => console.log('isShow=', isShow), [isShow]);
+  // const { reset, clear } = useTimeout(f, 1000, [isShow]);
+
+  const { reset, clear } = useTimeout(
+    () => console.log('isShow=', isShow),
+    count * 1000,
+    [isShow]
+  );
+
   return (
     <>
+      <button onClick={reset}>Reset</button>
+      <button onClick={clear}>Clear</button>
       <button
         onClick={toggle}
-        style={{ border: `1px solid ${isShow ? 'blue' : 'yellow'}` }}
+        style={{ border: `2px solid ${isShow ? 'blue' : 'yellow'}` }}
       >
         {isShow ? 'HIDE' : 'SHOW'}
       </button>
