@@ -65,10 +65,12 @@ const reducer = (session: Session, { type, payload }: Action) => {
         const maxId = Math.max(...session.cart.map((item) => item.id), 0) + 1;
         // cart.push({ id: maxId + 1, name, price }); // Bug!!
         return { ...session, cart: [...cart, { id: maxId + 1, name, price }] };
-      } else {
-        foundItem.name = name;
-        foundItem.price = price;
       }
+
+      foundItem.name = name;
+      foundItem.price = price;
+      console.log('🚀  foundItem:', foundItem);
+
       return { ...session };
     }
 
@@ -148,6 +150,8 @@ export const SessionProvider = ({ children, myHandlerRef }: ProviderProps) => {
     dispatch({ type: 'saveItem', payload: { id, name, price } });
   }, []);
 
+  // data 처리는 별도!
+
   const removeItem = useCallback((itemId: number) => {
     console.log('🚀  itemId:', itemId);
     // setSession({
@@ -167,7 +171,7 @@ export const SessionProvider = ({ children, myHandlerRef }: ProviderProps) => {
 
   useEffect(() => {
     if (data) {
-      console.log('ddddddddddddd>>>', data);
+      // console.log('ddddddddddddd>>>', data);
       dispatch({ type: 'set', payload: data });
     }
   }, [data]);
