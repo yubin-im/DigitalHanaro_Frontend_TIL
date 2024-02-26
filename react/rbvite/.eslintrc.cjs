@@ -34,6 +34,8 @@ module.exports = {
     'react/prop-types': 'off',
     'react/no-array-index-key': 'error',
     quotes: ['error', 'single', { allowTemplateLiterals: true }],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
   },
   settings: {
     react: { version: 'detect' }, // for react version warnning
