@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "type": "commonjs",
+  "type": "module",
   "keywords": [
     "JS"
   ],
@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "esm": "^3.2.25",
+    "express": "^4.18.3",
     "moment": "^2.30.1"
   }
 }
